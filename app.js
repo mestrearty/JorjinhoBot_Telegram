@@ -39,7 +39,14 @@ bot.on("message", (context) => {
       if (msg.includes("laranja")) {
         context.reply("você gosta de laranja?");
       }
-      
+
+      if (msg.includes("?")) {
+        context.reply("ta curioso?");
+      }
+
+      if (msg.includes("mew")) {
+        context.reply("mew meu com mew seu");
+      }
     } catch (e) {
       console.log(e);
     }
