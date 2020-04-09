@@ -10,12 +10,11 @@ module.exports = function () {
   // Listen for any kind of message. There are different kinds of
   // messages.
   bot.on("message", (context) => {
-    if (context.update.message.text) {
-      const msg = context.update.message.text.toLowerCase();
+    try {
+      if (context.update.message.text) {
+        const msg = context.update.message.text.toLowerCase();
 
-      try {
         if (msg.includes("onde")) {
-          console.log("no busão");
           context.reply("No busão");
         }
 
@@ -47,12 +46,12 @@ module.exports = function () {
           context.reply("mew meu com mew seu");
         }
 
-        if(msg.includes("show")){
+        if (msg.includes("show")) {
           context.reply("que show?");
         }
-      } catch (e) {
-        console.log(e);
       }
+    } catch (e) {
+      console.log(e);
     }
   });
 
