@@ -46,6 +46,10 @@ module.exports = function () {
         if (msg.includes("mew")) {
           context.reply("mew meu com mew seu");
         }
+
+        if(msg.includes("show")){
+          context.reply("que show?");
+        }
       } catch (e) {
         console.log(e);
       }
