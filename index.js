@@ -3,7 +3,7 @@
 var http = require("http");
 var port = process.env.port || 5000;
 
-require("./bot")(token);
+require("./bot")();
 
 http
   .createServer(function (request, response) {

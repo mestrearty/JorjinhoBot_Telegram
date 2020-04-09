@@ -1,7 +1,7 @@
 const Telegraf = require("telegraf");
 
-module.exports = function (key) {
-const bot = new Telegraf(key);
+const bot = new Telegraf(process.env.token);
+module.exports = function () {
   bot.start((ctx) => {
     const from = ctx.update.message.from;
     ctx.reply(`Seja bem vindo, ${from.first_name}: ${from}`);
