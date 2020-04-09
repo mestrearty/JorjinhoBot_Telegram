@@ -1,4 +1,3 @@
-const token = require("./.env");
 const Telegraf = require("telegraf");
 
 const bot = new Telegraf("1262617276:AAG8-ePKPPaM575A7TeK6W0dWuGdz-B1cC0");
