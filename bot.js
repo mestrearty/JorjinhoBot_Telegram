@@ -21,6 +21,22 @@ module.exports = function () {
     next();
   });
 
+  bot.command("jojidometro", (ctx, next) => {
+    const from = ctx.update.message.from;
+    if (from.first_name === "Fernando") {
+      ctx.reply("Nós somos um só!");
+    } else {
+      let rand = (Math.random() * 100).toFixed(0);
+      ctx.reply(
+        `Hoje ${from.first_name} está ${rand}% Anjo, mas aquele ${
+          100 - rand
+        }% é Jorjinho!`
+      );
+    }
+
+    next();
+  });
+
   bot.command("comandos", (ctx, next) => {
     ctx.reply(`
     /start ->Fala seu nome
@@ -30,134 +46,127 @@ module.exports = function () {
     next();
   });
 
-  // Listen for any kind of message. There are different kinds of
   // messages.
-  bot.on("text", async (context, next) => {
-    try {
-      if (context.update.message.text) {
-        const msg = context.update.message.text.toLowerCase();
-        const from = context.update.message.from;
-        console.log(from);
 
-        if (msg.includes("cancela")) {
-          await context.reply("Você ta cancelado!");
-        }
-
-        if (msg.includes("palmito")) {
-          await context.reply(
-            "O cara mais incrível de todo o grupo. Manda um salve pra ele por mim!"
-          );
-        }
-        if (msg.includes("anj")) {
-          await context.reply("Não fale mal do meu papai!");
-        }
-        if (msg.includes("jorjito")) {
-          await context.reply("Eu");
-        }
-        if (msg.includes("pokemon")) {
-          await context.reply("digimon > pokemon");
-        }
-
-        if (msg.includes("onde")) {
-          await context.reply("No busão");
-        }
-
-        if (msg.includes("bom")) {
-          await context.reply("Bom é chupar um saco");
-        }
-
-        if (msg.includes("mama")) {
-          await context.reply("Glub Glub");
-        }
-
-        //folha
-        if (msg.includes("lista")) {
-          await context.reply("Que lista????");
-        }
-
-        if (msg.includes("folha")) {
-          await context.reply("Que folha?");
-        }
-        if (msg.includes("que folha")) {
-          await context.reply("A rasgada que te dei");
-        }
-
-        if (msg.includes("rasgada")) {
-          await context.reply("quem rasga aqui sou eu!");
-        }
-
-        //bam bam
-        if (msg.includes("porra") || msg.includes("poha")) {
-          await context.reply("É hora do show poha!!!");
-        }
-        if (msg.includes("idade") || msg.includes("anos")) {
-          await context.reply(" É 37 anos caralho!!");
-        }
-        if (msg.includes("não vai dar") || msg.includes("nao vai dar")) {
-          await context.reply(" Que não vai da o que!!");
-        }
-
-        if (msg.includes("mais")) {
-          await context.reply(" Mais! Quero mais! Quero mais!");
-        }
-
-        if (msg.includes("casa")) {
-          await context.reply(
-            " Não vai dar? Que não vai dar o que rapá, saí de casa comi pra caralho!"
-          );
-        }
-
-        if (
-          msg.includes("13") ||
-          msg.includes("lula") ||
-          msg.includes("dilma") ||
-          msg.includes("pt") ||
-          msg.includes("bolsonaro")
-        ) {
-          await context.reply("É 13 poha!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
-          if (msg.includes("lula")) {
-            await context.reply("Livre!");
-          }
-        }
-
-        if (msg.includes("maquina") || msg.includes("máquina")) {
-          await context.reply("vc quer uma máquina minha?");
-        }
-
-        if (msg.includes("laranja")) {
-          await context.reply("você gosta de laranja?");
-        }
-
-        if (msg.includes("?")) {
-          await context.reply("ta curioso?");
-        }
-
-        if (msg.includes("mew")) {
-          await context.reply("mew meu com mew seu");
-        }
-
-        if (msg.includes("show")) {
-          await context.reply("que show?");
-        }
-
-        if (msg.includes("janta")) {
-          await context.reply("Filho vem jantar!!");
-        }
-
-        if (msg.includes("pau")) {
-          await context.reply("Mama aqui ó");
-        }
-
-        if (msg.includes("mim")) {
-          await context.reply("O @eonibugi, tão te chamando aqui ó");
-        }
-      }
-      next();
-    } catch (e) {
-      console.log(e);
-    }
+  bot.hears(/cancela/i, (ctx) => {
+    ctx.reply("Você ta cancelado!");
   });
 
-  bot.launch()
+  bot.hears(/esquerda/i, (ctx) => {
+    ctx.reply("Tortão pra esquerda!");
+  });
+
+  bot.hears(/palmito/i, (ctx) => {
+    ctx.reply(
+      "O cara mais incrível de todo o grupo. Manda um salve pra ele por mim!"
+    );
+  });
+
+  bot.hears(/anj+/i, (ctx) => {
+    ctx.reply("Não fale mal do meu papai!");
+  });
+
+  bot.hears(/jorjito/i, (ctx) => {
+    ctx.reply("Eu");
+  });
+
+  bot.hears(/pokemon/i, (ctx) => {
+    ctx.reply("digimon > pokemon");
+  });
+
+  bot.hears(/onde/i, (ctx) => {
+    ctx.reply("No busão");
+  });
+
+  bot.hears(/bom/i, (ctx) => {
+    ctx.reply("Bom é chupar um saco");
+  });
+
+  bot.hears(/mama/i, (ctx) => {
+    ctx.reply("Glub Glub");
+  });
+
+  //folha
+  bot.hears(/lista/i, (ctx) => {
+    ctx.reply("Que lista????");
+  });
+
+  bot.hears(/que*folha/i, (ctx) => {
+    ctx.reply("A rasgada que te dei");
+  });
+
+  bot.hears(/folha/i, (ctx) => {
+    ctx.reply("Que folha?");
+  });
+
+  bot.hears(/rasgada/i, (ctx) => {
+    ctx.reply("quem rasga aqui sou eu!");
+  });
+
+  //bam bam
+  bot.hears(/idade|anos/i, (ctx) => {
+    ctx.reply("É 37 anos caralho!!");
+  });
+
+  bot.hears(/po[(rr)h]a/i, (ctx) => {
+    ctx.reply("É hora do show poha!!!");
+  });
+
+  bot.hears(/n[ãa]o vai dar/i, (ctx) => {
+    ctx.reply("Que não vai da o que!!");
+  });
+
+  bot.hears(/mais/i, (ctx) => {
+    ctx.reply("Mais! Quero mais! Quero mais!");
+  });
+
+  bot.hears(/casa/i, (ctx) => {
+    ctx.reply(
+      "Não vai dar? Que não vai dar o que rapá, saí de casa comi pra caralho!"
+    );
+  });
+
+  bot.hears(/13|lula|dilma|pt|bolsonaro/i, (ctx) => {
+    ctx.reply("É 13 poha!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+  });
+
+  bot.hears(/m[aá]quina/i, (ctx) => {
+    ctx.reply("vc quer uma máquina minha?");
+  });
+
+  bot.hears(/laranja/i, (ctx) => {
+    ctx.reply("você gosta de laranja?");
+  });
+
+  bot.hears(/\?/i, (ctx) => {
+    ctx.reply("ta curioso?");
+  });
+
+  bot.hears(/mew/i, (ctx) => {
+    ctx.reply("mew meu com mew seu");
+  });
+
+  bot.hears(/show/i, (ctx) => {
+    ctx.reply("que show?");
+  });
+
+  bot.hears(/jantar/i, (ctx) => {
+    ctx.reply("Filho vem jantar!!");
+  });
+
+  bot.hears(/pau/i, (ctx) => {
+    ctx.reply("Mama aqui ó");
+  });
+
+  bot.hears(/mim/i, (ctx) => {
+    ctx.reply("O @eonibugi, tão te chamando aqui ó");
+  });
+
+  bot.on("sticker", (ctx) => {
+    const sticker = ctx.update.message.sticker;
+    console.log(sticker);
+    ctx.reply(`${sticker.emoji}`);
+  });
+
+  bot.startPolling();
 };
