@@ -20,7 +20,7 @@ module.exports = function () {
 
   bot.command("chance", (ctx, next) => {
     let msg = (ctx.update.message.text);
-    msg = msg.match(/\d.*/g);
+    msg = msg.match(/\d+/g);
     if(msg){
      setChance(parseInt(msg,10));
       ctx.reply(`Certo, vou te responder só ${chance}% das vezes... Ou não. Eu faço o que eu quero meu amor!`);
@@ -82,12 +82,12 @@ module.exports = function () {
     if (showMsgOrNot()) ctx.reply("Você ta cancelado!");
   });
 
-  bot.hears(/esquerda/i, (ctx) => {
-    if (showMsgOrNot()) ctx.reply("Tortão pra esquerda!");
+  bot.hears(/aumento/i, (ctx) => {
+    if (showMsgOrNot()) ctx.reply("Aumento? Você está precisando de um aumento peniano?! Clique aqui![www.pintaomaisgrossoegostoso.com.penis]");
   });
 
-  bot.hears(/olh[oa]/i, (ctx) => {
-    if (showMsgOrNot()) ctx.reply("Olhou, sorriu, mandioca no bombril!");
+  bot.hears(/esquerda/i, (ctx) => {
+    if (showMsgOrNot()) ctx.reply("Tortão pra esquerda!");
   });
 
   bot.hears(/n[aã]o da/i, (ctx) => {
@@ -215,8 +215,18 @@ module.exports = function () {
   });
 
   bot.hears(/mim/i, (ctx) => {
-    if (showMsgOrNot()) ctx.reply("O @eonibugi, tão te chamando aqui ó");
+    if (showMsgOrNot()) ctx.reply("O @eonibugis, tão te chamando aqui ó");
   });
+  
+  bot.hears(/olh[oa]/i, (ctx) => {
+    if (showMsgOrNot()) ctx.reply("Olhou, sorriu, mandioca no bombril!");
+  });
+
+  
+  bot.hears(/passa/i, (ctx) => {
+    if (showMsgOrNot()) ctx.reply("levanta que a tia quer passa pano!");
+  });
+
 
   bot.on("sticker", (ctx) => {
     const sticker = ctx.update.message.sticker;
